@@ -9,7 +9,6 @@ function App() {
     <EthProvider>
       <div id="App">
         <div className="container">
-          <h1>Hiiii</h1>
           <Intro />
           <hr />
           <Setup />
