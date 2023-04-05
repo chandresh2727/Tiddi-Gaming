@@ -4,7 +4,32 @@ pragma solidity >=0.4.22 <0.9.0;
 contract SimpleStorage {
 
   enum ChooseField {Tie,BAT,BALL}
+
   ChooseField chooseField;
+
+    enum typeOfBaller {Fast,spin} 
+
+    enum fasterBallType {yorker,full,good,short,Bouncer,fullTose} 
+
+    enum sppinerBallType {topSpin, Doosra, armBall, offBreak}
+
+   enum typeOfShot {
+                    scoop,
+                    legGlance,
+                    sweep,
+                    hook,
+                    pull,
+                    onDrive,
+                    loftedDrive,
+                    straightDrive,
+                    offDrive,
+                    coverDrive,
+                    squareDrive,
+                    squareCut,
+                    reveseSweep,
+                    upeerCut
+                    }
+
 
   //This is for generating the random number
   uint public randNumber = uint(keccak256(abi.encodePacked(block.timestamp,msg.sender))) % 2;
