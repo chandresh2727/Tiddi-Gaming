@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-contract tiddani{
+contract check{
 
     enum ChooseField {Tie,BAT,BALL}
     ChooseField public chooseField;
@@ -58,25 +58,25 @@ contract tiddani{
     // uint256 winAmount = 1 ETH;
 
     //This is for number of over
-    uint256 public T5 = 5;
-    uint256 public T10 = 10;
-    uint256 public T20 = 20;
-    function selectAnOver(uint256 numOver) view  public returns(string memory){
-        if(T5 == numOver) {
-            return "You have selected T5";
-        }
-        else if (T10 == numOver) {
-            return "You have selected T10";
-        }
-        else if(T20 == numOver){
-            return "You have selected T20";
-        }
-        else {
-            return "Wrong input, Please Select T5,T10,T20 out any one";
-        }
-    }
+    // uint256 public T5 = 5;
+    // uint256 public T10 = 10;
+    // uint256 public T20 = 20;
+    // function selectAnOver(uint256 numOver) view  public returns(string memory){
+    //     if(T5 == numOver) {
+    //         return "You have selected T5";
+    //     }
+    //     else if (T10 == numOver) {
+    //         return "You have selected T10";
+    //     }
+    //     else if(T20 == numOver){
+    //         return "You have selected T20";
+    //     }
+    //     else {
+    //         return "Wrong input, Please Select T5,T10,T20 out any one";
+    //     }
+    // }
 
-    
+    // Here we gone fix the over for an user 
 
 
     //Computer side random number generator
@@ -88,13 +88,39 @@ contract tiddani{
 
     uint256 public spinComputer = uint(keccak256(abi.encodePacked(block.timestamp,msg.sender))) % 4;
     
-    uint256 public run = 0;
+    // uint256 public run = 0;
 
     bool public rightChooise = true;
 
-    function computerSideGame() public returns(uint256){
+    // modifier numOfBalll(){
+    //     for(uint256 i = 1;i <= 2; i++){
+
+    //     }
+    //     _;
+    // }
+
+    //This is for number of Ball
+    modifier numOfBalll(uint noBall)
+    {
+        for(noBall = 1;noBall <=2; noBall++){
+            _;
+        }
+        // if(exp >= 5)
+        //     _;
+        // else
+        //     revert("Must have a minimum of 5 years of experience");
+    }
+    //This is for number of Over
+    modifier numOfOver(uint noOver){
+        for(noOver = 1;noOver <= 5;noOver++){
+            _;
+        }
+    }
+
+    function computerSideGame() public numOfBalll(1) numOfOver(1) returns(uint256 run){
         
         //  0 ==>> Fast, 1 ==>> spinner 
+        
         if(typeComputerBalling == 0) {
             if(fastComputer == 0){
                 if(((fasterBallType == FasterBallType.yorker) && ( typeOfShot== TypeOfShot.legGlance))
@@ -172,6 +198,7 @@ contract tiddani{
                 else if((fasterBallType == FasterBallType.good) && (typeOfShot == TypeOfShot.duck)) {
                     run += 1;
                 }
+        }
         }
         }
 
@@ -260,7 +287,6 @@ contract tiddani{
                     run += 0;
                 }
             }
-        }
         }
 
 
@@ -388,11 +414,11 @@ contract tiddani{
                 }
             }
             }
-            return run;
+            run;
         }
 
     //Bool,uint insted bool 
-    function runForBall() public {
+    function runForBall() public numOfOver(1) numOfBalll(1) returns(uint256 run) {
         if(typeOfBaller == TypeOfBaller.Fast){
             if((fasterBallType == FasterBallType.yorker)) {
               if((fasterBallType == FasterBallType.yorker) && (typeOfShot == TypeOfShot.legGlance)
@@ -670,9 +696,8 @@ contract tiddani{
                           run += 0;
                       }
                   }
-            
          }
-
+         run;
     }
 
     // uint256 run = 0;
@@ -698,7 +723,7 @@ contract tiddani{
 
 
 
-//Over Counyt
+//Over Count //Done
 //Run functio peramter 
 //Compuer ka two player 
 //OVER DELETE
@@ -711,5 +736,8 @@ contract tiddani{
 //computer bating karve 
 //
 //high score Documentery 
-//5 OVER AND 2 BALL 
+//5 OVER AND 2 BALL //Done
 //TOTALRUN, COUNTTOTALLRUN
+//Backend connect with frontend
+//Networkid
+
