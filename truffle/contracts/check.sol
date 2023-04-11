@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+<<<<<<< HEAD
 contract check{
+=======
+contract Check{
+>>>>>>> 4fe9794198af9a07891a4b2e069cd8df79b25973
 
     enum ChooseField {Tie,BAT,BALL}
     ChooseField public chooseField;
