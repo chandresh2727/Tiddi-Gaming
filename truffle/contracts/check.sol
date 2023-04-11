@@ -100,9 +100,9 @@ contract check{
     // }
 
     //This is for number of Ball
-    modifier numOfBalll(uint noBall)
+    modifier numOfBalll()
     {
-        for(noBall = 1;noBall <=2; noBall++){
+        for(uint256 noBall = 1;noBall <=2; noBall++){
             _;
         }
         // if(exp >= 5)
@@ -111,13 +111,14 @@ contract check{
         //     revert("Must have a minimum of 5 years of experience");
     }
     //This is for number of Over
-    modifier numOfOver(uint noOver){
-        for(noOver = 1;noOver <= 5;noOver++){
+    modifier numOfOver(){
+        for(uint256 noOver = 1;noOver <= 5;noOver++){
             _;
         }
     }
 
-    function computerSideGame() public numOfBalll(1) numOfOver(1) returns(uint256 run){
+    //Here i am facing an issue for passing an parameter for an modifier and if code is run fine so i don't gone pass the parameter or i will pass the parameter
+    function computerSideGame() public numOfBalll() numOfOver() returns(uint256 run){
         
         //  0 ==>> Fast, 1 ==>> spinner 
         
@@ -418,7 +419,7 @@ contract check{
         }
 
     //Bool,uint insted bool 
-    function runForBall() public numOfOver(1) numOfBalll(1) returns(uint256 run) {
+    function runForBall() public numOfOver() numOfBalll() returns(uint256 run) {
         if(typeOfBaller == TypeOfBaller.Fast){
             if((fasterBallType == FasterBallType.yorker)) {
               if((fasterBallType == FasterBallType.yorker) && (typeOfShot == TypeOfShot.legGlance)
