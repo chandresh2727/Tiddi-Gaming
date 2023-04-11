@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-<<<<<<< HEAD
 contract check{
-=======
-contract Check{
->>>>>>> 4fe9794198af9a07891a4b2e069cd8df79b25973
 
     enum ChooseField {Tie,BAT,BALL}
     ChooseField public chooseField;
@@ -96,6 +92,12 @@ contract Check{
 
     bool public rightChooise = true;
 
+    // modifier numOfBalll(){
+    //     for(uint256 i = 1;i <= 2; i++){
+
+    //     }
+    //     _;
+    // }
 
     //This is for number of Ball
     modifier numOfBalll(uint noBall)
@@ -108,7 +110,6 @@ contract Check{
         // else
         //     revert("Must have a minimum of 5 years of experience");
     }
-
     //This is for number of Over
     modifier numOfOver(uint noOver){
         for(noOver = 1;noOver <= 5;noOver++){
